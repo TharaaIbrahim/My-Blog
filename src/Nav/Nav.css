@@ -1,0 +1,28 @@
+.navBar {
+  display: flex;
+  flex-direction: row;
+  gap: 70%;
+  background-color: rgb(248, 197, 103);
+  padding: 1rem;
+}
+.Logo {
+  font-family: cursive;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.nav_list {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  gap: 30%;
+  align-self: center;
+  font-family: cursive;
+}
+.nav_list li:hover {
+  font-weight: bold;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
