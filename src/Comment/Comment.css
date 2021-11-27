@@ -9,3 +9,6 @@
   font-weight: bold;
   display: inline;
 }
+.hideComment {
+  display: none;
+}

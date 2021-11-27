@@ -25,6 +25,7 @@
   font-weight: bold;
   margin-top: 1%;
   padding: 0% 1%;
+  border-left: 1px solid gray;
 }
 .buttons > i {
   margin-right: 1rem;
@@ -67,4 +68,8 @@
 }
 .admin_Info > h4 {
   align-self: center;
+}
+.comment_Btn:hover {
+  text-decoration: underline gray;
+  cursor: pointer;
 }

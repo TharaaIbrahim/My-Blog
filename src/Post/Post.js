@@ -11,6 +11,7 @@ export class Post extends Component {
       src: "",
       comment: "",
       commentCounter: 0,
+      displayComment: "display",
       like: 0,
     };
   }
@@ -28,6 +29,14 @@ export class Post extends Component {
       comment: newComment,
       commentCounter: this.state.commentCounter + 1,
     });
+  };
+
+  displayComment = () => {
+    if (this.state.displayComment === "display") {
+      this.setState({ displayComment: "hide" });
+    } else if (this.state.displayComment === "hide") {
+      this.setState({ displayComment: "display" });
+    }
   };
 
   likeHandler = () => {
@@ -48,14 +57,20 @@ export class Post extends Component {
           <p>{this.props.content}</p>
           {this.props.src === "" ? "" : <img src={this.props.src} alt="blog" />}
           <div className="buttons">
-            <p>{this.state.commentCounter} Comments</p>
+            <p className="comment_Btn" onClick={this.displayComment}>
+              {this.state.commentCounter} Comments
+            </p>
             <p>{this.state.like} Likes</p>
             <i className="fas fa-thumbs-up" onClick={this.likeHandler}></i>
           </div>
         </div>
         <div className="comment_Show">
           {this.comment.map((comment, id) => (
-            <Comment newComment={comment.comment} key={id} />
+            <Comment
+              displayComment={this.state.displayComment}
+              newComment={comment.comment}
+              key={id}
+            />
           ))}
           <CommentForm submit={this.addComment} />
         </div>

@@ -7,7 +7,11 @@ export class Comment extends Component {
   userName = sessionStorage.getItem("userName");
   render() {
     return (
-      <div className="newComment">
+      <div
+        className={
+          this.props.displayComment === "display" ? "newComment" : "hideComment"
+        }
+      >
         <p>{this.userName}:</p> {this.props.newComment}
       </div>
     );
