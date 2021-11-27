@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./Register.css";
 export class Register extends Component {
   constructor() {
@@ -20,33 +21,37 @@ export class Register extends Component {
   };
 
   submitHandler = (e) => {
-    // this.userData.forEach((element) => {
-    //   if (this.state.email === element.email) {
-    //     this.setState({ msg: "This email has an account", registration: "" });
-    //   }
-    // });
-    // if (this.state.msg !== "This email has an account") {
-    if (this.state.repeat === this.state.password) {
-      this.setState({ msg: "Match" });
-      this.dataArr.push(this.state);
-      if (!localStorage.getItem("userData")) {
-        localStorage.setItem("userData", JSON.stringify(this.dataArr));
-      } else {
-        const getData = JSON.parse(localStorage.getItem("userData"));
-        getData.push(this.state);
-        localStorage.setItem("userData", JSON.stringify(getData));
+    let breakCondition = "false";
+    this.userData.forEach((element) => {
+      if (this.state.email === element.email && breakCondition === "false") {
+        this.setState({ msg: "This email has an account", registration: "" });
+        breakCondition = "ture";
       }
-      this.setState({
-        userName: "",
-        email: "",
-        password: "",
-        repeat: "",
-        msg: "",
-        registration: "success",
-      });
-    } else {
-      this.setState({ msg: "Password doesn`t match", registration: "" });
+    });
+    if (breakCondition === "false") {
+      if (this.state.repeat === this.state.password) {
+        this.setState({ msg: "Match" });
+        this.dataArr.push(this.state);
+        if (!localStorage.getItem("userData")) {
+          localStorage.setItem("userData", JSON.stringify(this.dataArr));
+        } else {
+          const getData = JSON.parse(localStorage.getItem("userData"));
+          getData.push(this.state);
+          localStorage.setItem("userData", JSON.stringify(getData));
+        }
+        this.setState({
+          userName: "",
+          email: "",
+          password: "",
+          repeat: "",
+          msg: "",
+          registration: "success",
+        });
+      } else {
+        this.setState({ msg: "Password doesn`t match", registration: "" });
+      }
     }
+
     e.preventDefault();
   };
 
@@ -104,6 +109,9 @@ export class Register extends Component {
             {this.state.msg}
           </p>
           <button type="submit">Submit</button>
+          <p className="sign_msg">
+            Already have an account? <Link to="/">Login</Link>
+          </p>
         </form>
       </React.Fragment>
     );

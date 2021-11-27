@@ -82,7 +82,7 @@
 .main_Center {
   display: flex;
   flex-direction: row;
-  margin: 3% auto;
+  margin: 2% auto;
   align-items: center;
   justify-content: center;
 }

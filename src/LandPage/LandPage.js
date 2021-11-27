@@ -35,15 +35,22 @@ export class LandPage extends Component {
       sessionStorage.setItem("userName", "admin");
       window.location.href = "blog";
     } else {
+      let breakCondition = "false";
       this.userData.forEach((element) => {
-        if (this.state.email !== element.email) {
+        if (this.state.email !== element.email && breakCondition === "false") {
           this.setState({ msg: "You are not registered" });
-        } else if (this.state.password !== element.password) {
-          this.setState({ msg: "Incorrect Password" });
         } else if (
+          this.state.password !== element.password &&
+          breakCondition === "false"
+        ) {
+          this.setState({ msg: "Incorrect Password" });
+          breakCondition = "ture";
+        }
+        if (
           this.state.email === element.email &&
           this.state.password === element.password
         ) {
+          breakCondition = "ture";
           this.setState({ msg: "" });
           this.setState({ role: "users" });
           sessionStorage.setItem("userRole", "users");

@@ -50,3 +50,10 @@
 .registration_Failed {
   display: none;
 }
+.sign_msg {
+  text-align: center;
+  margin-top: 2%;
+}
+.sign_msg > a {
+  text-decoration: underline;
+}
