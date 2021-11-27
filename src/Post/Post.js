@@ -32,10 +32,10 @@ export class Post extends Component {
   };
 
   displayComment = () => {
-    if (this.state.displayComment === "display") {
-      this.setState({ displayComment: "hide" });
-    } else if (this.state.displayComment === "hide") {
+    if (this.state.displayComment === "hide") {
       this.setState({ displayComment: "display" });
+    } else if (this.state.displayComment === "display") {
+      this.setState({ displayComment: "hide" });
     }
   };
 
