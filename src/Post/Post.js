@@ -13,6 +13,7 @@ export class Post extends Component {
       commentCounter: 0,
       displayComment: "display",
       like: 0,
+      likeClicked: "unclicked",
     };
   }
 
@@ -40,7 +41,11 @@ export class Post extends Component {
   };
 
   likeHandler = () => {
-    this.setState({ like: this.state.like + 1 });
+    if (this.state.likeClicked === "unclicked") {
+      this.setState({ like: this.state.like + 1, likeClicked: "clicked" });
+    } else {
+      this.setState({ like: this.state.like - 1, likeClicked: "unclicked" });
+    }
   };
 
   render() {
@@ -61,7 +66,14 @@ export class Post extends Component {
               {this.state.commentCounter} Comments
             </p>
             <p>{this.state.like} Likes</p>
-            <i className="fas fa-thumbs-up" onClick={this.likeHandler}></i>
+            <i
+              className={
+                this.state.likeClicked === "unClicked"
+                  ? "far fa-thumbs-up"
+                  : "fas fa-thumbs-up"
+              }
+              onClick={this.likeHandler}
+            ></i>
           </div>
         </div>
         <div className="comment_Show">

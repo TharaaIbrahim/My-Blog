@@ -25,6 +25,7 @@ export class CommentForm extends Component {
           value={this.state.comment}
           placeholder="Add a comment"
           name="comment"
+          required
         />
         <button type="submit">Comment</button>
       </form>

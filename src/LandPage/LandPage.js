@@ -96,6 +96,7 @@ export class LandPage extends Component {
                 onChange={this.changeHandler}
                 value={this.state.email}
                 name="email"
+                required
               />
               <input
                 type="password"
@@ -103,6 +104,7 @@ export class LandPage extends Component {
                 onChange={this.changeHandler}
                 value={this.state.password}
                 name="password"
+                required
               />
               <p>{this.state.msg}</p>
               <button type="submit">Login</button>
